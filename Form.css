@@ -1,0 +1,418 @@
+/* --- Global Styles --- */
+* { box-sizing: border-box; }
+
+body {
+    background: #fff; /* Dark background to make the forms pop */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- Main Container --- */
+.container {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+}
+
+/* --- Form Containers --- */
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.sign-up-container {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+/* When Active: Slide the Forms */
+.container.active .sign-in-container {
+    transform: translateX(100%);
+}
+
+.container.active .sign-up-container {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: show 0.6s;
+}
+
+@keyframes show {
+    0%, 49.99% { opacity: 0; z-index: 1; }
+    50%, 100% { opacity: 1; z-index: 5; }
+}
+
+/* --- The Sliding Overlay --- */
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    /* Smooth Cubic-Bezier Transition */
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 100;
+}
+
+.container.active .overlay-container {
+    transform: translateX(-100%);
+}
+
+.overlay {
+    /* Diagonal Gradient Split */
+    background: linear-gradient(135deg, #0052D4 0%, #0052D4 48%, #ffffff 52%, #ffffff 100%);
+    background-repeat: no-repeat;
+    background-size: 200% 100%; /* Important for sliding the gradient */
+    background-position: 0 0;
+    color: #FFFFFF;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55), background-position 0.6s ease;
+}
+
+.container.active .overlay {
+    transform: translateX(50%);
+    background-position: 100% 0; /* Shifts the diagonal color to the other side */
+}
+
+/* --- Panels inside the Overlay --- */
+.overlay-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.overlay-left {
+    transform: translateX(-20%);
+    color: #fff; /* Dark blue text for the white diagonal side */
+}
+
+.container.active .overlay-left {
+    transform: translateX(0);
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+    color: #fff; /* White text for the blue side */
+}
+
+.container.active .overlay-right {
+    transform: translateX(20%);
+}
+
+/* --- Buttons & Inputs --- */
+button {
+    border-radius: 20px;
+    border: 1px solid #0052D4;
+    background-color: #0052D4;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 80ms ease-in;
+}
+
+button:active { transform: scale(0.95); }
+
+button.ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+
+.overlay-left button.ghost {
+    border-color: #0052D4;
+    color: #fff;
+}
+
+form {
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+}
+
+input {
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+}
+
+
+
+/* --- Responsive Container --- */
+.container {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 768px; /* Desktop width */
+    min-height: 480px;
+    margin: 20px; /* Space around container on mobile */
+    display: flex;
+}
+
+/* --- Responsive Adjustments for Tablets & Phones --- */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        min-height: 550px;
+        flex-direction: column; /* Stack elements if needed */
+    }
+
+    /* Hide the sliding overlay on very small screens or simplify it */
+    .overlay-container {
+        display: none; /* Simplest mobile fix: hide the decorative slider */
+    }
+
+    .form-container {
+        width: 100% !important;
+        position: relative;
+        transform: none !important;
+    }
+
+    /* Toggle visibility via opacity instead of sliding on mobile */
+    .sign-up-container {
+        display: none;
+    }
+
+    .container.active .sign-up-container {
+        display: flex;
+        opacity: 1;
+    }
+
+    .container.active .sign-in-container {
+        display: none;
+    }
+}
+
+/* --- Smooth Scaling for Inputs --- */
+input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px; /* Prevents iOS zoom-on-focus */
+}
+
+/* --- The sliding logic (Desktop only) --- */
+@media (min-width: 769px) {
+    .overlay-container {
+        display: block;
+    }
+}
+
+
+
+
+/* --- Responsive Container --- */
+.container {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 768px; /* Desktop width */
+    min-height: 480px;
+    margin: 20px; /* Space around container on mobile */
+    display: flex;
+}
+
+/* --- Responsive Adjustments for Tablets & Phones --- */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        min-height: 550px;
+        flex-direction: column; /* Stack elements if needed */
+    }
+
+    /* Hide the sliding overlay on very small screens or simplify it */
+    .overlay-container {
+        display: none; /* Simplest mobile fix: hide the decorative slider */
+    }
+
+    .form-container {
+        width: 100% !important;
+        position: relative;
+        transform: none !important;
+    }
+
+    /* Toggle visibility via opacity instead of sliding on mobile */
+    .sign-up-container {
+        display: none;
+    }
+
+    .container.active .sign-up-container {
+        display: flex;
+        opacity: 1;
+    }
+
+    .container.active .sign-in-container {
+        display: none;
+    }
+}
+
+/* --- Smooth Scaling for Inputs --- */
+input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px; /* Prevents iOS zoom-on-focus */
+}
+
+/* --- The sliding logic (Desktop only) --- */
+@media (min-width: 769px) {
+    .overlay-container {
+        display: block;
+    }
+}
+
+.mobile-only {
+    display: none;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .mobile-only {
+        display: block;
+    }
+}
+
+/* --- MOBILE RESPONSIVE FIX --- */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        min-height: 500px;
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    /* 1. Hide the sliding overlay entirely on mobile */
+    .overlay-container {
+        display: none;
+    }
+
+    /* 2. Reset the form containers to take up the full width */
+    .form-container {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        pointer-events: none; /* Prevents clicking hidden forms */
+        transition: opacity 0.4s ease-in-out;
+    }
+
+    /* 3. Show the correct form based on the .active class */
+    /* When NOT active: Show Sign-In */
+    .sign-in-container {
+        opacity: 1;
+        pointer-events: all;
+        z-index: 5;
+    }
+
+    /* When active: Show Sign-Up */
+    .container.active .sign-up-container {
+        opacity: 1;
+        pointer-events: all;
+        z-index: 5;
+        transform: none; /* Remove horizontal slide */
+    }
+
+    /* Hide the Sign-In when Sign-Up is active */
+    .container.active .sign-in-container {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* 4. Adjust the form padding for smaller screens */
+    form {
+        padding: 0 20px;
+    }
+}
+
+
+.overlay {
+    /* Replace the URL with your actual image path */
+    background: linear-gradient(rgba(0, 82, 212, 0.4), rgba(0, 82, 212, 0.4)), 
+                url('Assets/Image/SHK.png'); 
+    background-size: cover;
+    background-position: center;
+    color: #FFFFFF;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* The "Diagonal" effect using Clip-Path */
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 100;
+    /* This creates the diagonal shape for the image container */
+    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.container.active .overlay-container {
+    transform: translateX(-100%);
+    /* Flips the diagonal angle when sliding to the other side */
+    clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+}
+
+
+.button-link {
+    color:#fff;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal | Standard Hill SS</title>
+    <link rel="stylesheet" href="Style.css">
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-toggle">
+<label for="nav-toggle" class="mobile-menu-btn">
+    <i class="fas fa-bars"></i>
+</label>
+
+<nav class="sidebar">
+    <div class="sidebar-header">
+        <img src="Assets/Image/IMG-20260418-WA0035.jpg" alt="SHSS Logo" class="school-logo">
+        <h2>SHSS</h2>
+    </div>
+    <ul class="nav-links">
+                <li class="active" onclick="showSection('dashboard')"><a href="Index.html"><span>📊</span> Dashboard</a></li>
+                <li onclick="showSection('students')"><a href="student.html"><span>🎓</span> Student Directory</a></li>
+                <li onclick="showSection('teachers')"><a href="teachers.html"><span>👨‍🏫</span> Teacher Directory</a></li>
+                <li onclick="showSection('classes')"><a href="classes.html"><span>🏫</span> Class Management</a></li>
+                <li onclick="showSection('attendance')"><a href="attendance.html"><span>📅</span> Attendance</a></li>        
+                <li><a href="Assignments.html"><i class="fas fa-book-open"></i> Assignments</a></li>
+                <li><a href="Fees.html"><i class="fas fa-file-invoice-dollar"></i> School Fees</a></li>
+                <li><a href="Results.html"><i class="fas fa-chart-bar"></i> Exam Results</a></li>
+                <li><a href="Calendar.html"><i class="fas fa-calendar-alt"></i> School Calendar</a></li>
+                <li onclick="showSection('assignments')"><a href="assignments.html"><span>📝</span> Assignments</a></li>
+                <li onclick="showSection('exams')"><a href="exams.html"><span>📚</span> Exams & Results</a></li>
+                <li onclick="showSection('timetable')"><a href="timetable.html"><span>⏰</span> Timetable</a></li>
+                <li onclick="showSection('discipline')"><a href="discipline.html"><span>⚖️</span> Discipline</a></li>
+                <li onclick="showSection('academics')"><a href="academics.html"><span>📝</span> Academic Results</a></li>
+                <li onclick="showSection('fees')"><a href="finance.html"><span>💰</span> Fees Management</a></li>
+                <li onclick="showSection('library')"><a href="library.html"><span>📚</span> Library</a></li>
+                <li onclick="showSection('transport')"><a href="transport.html"><span>🚍</span> Transport</a></li>
+                <li onclick="showSection('hostel')"><a href="hostel.html"><span>🏨</span> Hostel</a></li>
+                <li onclick="showSection('health')"><a href="health.html"><span>🏥</span> Health Records</a></li>
+                <li onclick="showSection('communication')"><a href="communication.html"><span>📞</span> Communication</a></li>
+                <li onclick="showSection('events')"><a href="events.html"><span>🎉</span> Events</a></li>
+                <li onclick="showSection('reports')"><a href="Report.html"><span>📈</span> Reports</a></li>
+                <li onclick="showSection('staff')"><a href="staff.html"><span>👨‍🏫</span> Staff Directory</a></li>
+                <li onclick="showSection('notices')"><a href="notices.html"><span>🔔</span> Notices</a></li>
+                <li onclick="showSection('settings')"><a href="settings.html"><span>⚙️</span> Settings</a></li>
+                </ul>
+     <div class="logout-section">
+     <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </nav>
+    <main class="main-content">
+        <header class="dashboard-header">
+            <div class="user-welcome">
+                <h1>Welcome, Brian Nkata</h1>
+                <p>Standard Hill SS Student Portal</p>
+            </div>
+            <div class="header-actions">
+                <span class="term-badge">Term II 2026</span>
+                <div class="profile-circle">BN</div>
+            </div>
+        </header>
+
+        <div class="content-grid">
+            
+            <div class="card card-blue">
+                <div class="card-title">
+                    <h3>Fees Summary</h3>
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="card-body">
+                    <span class="label">Outstanding Balance</span>
+                    <h2 class="amount">UGX 420,000</h2>
+                    <button class="btn-white">Pay Online</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <h3>Academic Progress</h3>
+                    <i class="fas fa-line-chart"></i>
+                </div>
+                <div class="card-body">
+                    <table class="simple-table">
+                        <tr><td>Mathematics</td><td><strong>85%</strong></td></tr>
+                        <tr><td>Physics</td><td><strong>78%</strong></td></tr>
+                        <tr><td>Chemistry</td><td><strong>72%</strong></td></tr>
+                    </table>
+                    <a href="#" class="view-more">View Full Report</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <h3>Announcements</h3>
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <div class="notice-container">
+                    <div class="notice-box">
+                        <small>24 April</small>
+                        <p>Visitation Day scheduled for next Sunday.</p>
+                    </div>
+                    <div class="notice-box">
+                        <small>20 April</small>
+                        <p>Mock Exams for S.4 & S.6 begin on Monday.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

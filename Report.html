@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management - Reports</title>
+    <link rel="stylesheet" href="Report.css">
+    <script src="Report.js" defer></script>
+</head>
+<body>
+
+<header>
+    <header class="report-header">
+
+    <h1>School Reporting Engine</h1>
+    <nav>
+        <a href="index.html">Dashboard</a> | 
+        <a href="students.html">Students</a> | 
+        <a href="staff.html">Staff</a> |
+        <a href="academics.html">Academics</a> |
+        <a href="reports.html"><strong>Reports</strong></a> |
+        <a href="settings.html">Settings</a>
+    </nav>
+        <div class="school-identity">
+
+            <img src="Assets/Image/IMG-20260418-WA0035.jpg" alt="SHSS Logo" class="report-logo">
+            <div class="school-details">
+                <h1>STANDARD HILL KALUNGU SECONDARY SCHOOL</h1>
+                <p class="motto">"Our Utmost Is Excelent"</p>
+                <p class="address">P.O. Box 123, Masaka, Uganda</p>
+                <p class="contact">Tel: +256 700 000000 | Email: info@standardhill.com</p>
+            </div>
+        </div>
+        
+        <div class="report-type">
+            <h2>STUDENT PROGRESS REPORT</h2>
+            <p>Term II Examination 2026</p>
+        </div>
+
+        <div class="student-info-grid">
+            <div class="info-item">
+                <span class="label">NAME:</span>
+                <span class="value">NKATA BRIAN</span>
+            </div>
+            <div class="info-item">
+                <span class="label">REG NO:</span>
+                <span class="value">SHSS/2026/042</span>
+            </div>
+            <div class="info-item">
+                <span class="label">CLASS:</span>
+                <span class="value">S.4 WEST</span>
+            </div>
+            <div class="info-item">
+                <span class="label">POSITION:</span>
+                <span class="value">04 out of 120</span>
+            </div>
+        </div>
+    </header>
+
+
+<section id="filters" class="admin-only">
+    <h3>Generate New Report</h3>
+        <form>
+            <label for="reportType">Report Type:</label>
+            <select id="reportType">
+                <option value="academic">Academic Performance</option>
+                <option value="attendance">Attendance Summary</option>
+                <option value="finance">Fee Collection/Finance</option>
+                <option value="staff">Staff Payroll</option>
+            </select>
+
+            <label for="dateFrom">From:</label>
+            <input type="date" class="dataForm" id="dateFrom">
+
+            <label for="dateTo">To:</label>
+            <input type="date" class="dataForm" id="dateTo">
+
+            <button type="submit">Generate Report</button>
+            <button type="button" onclick="window.print()">Export to PDF</button>
+        </form>
+    </section>
+
+    <br>
+
+
+<section id="visual-summary">
+    <h3>Quick Summary Statistics</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Total Students</th>
+                <th>Average Attendance</th>
+                <th>Pass Rate</th>
+                <th>Outstanding Fees</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Total Students">1,240</td>
+                <td data-label="Average Attendance">94%</td>
+                <td data-label="Pass Rate">88.5%</td>
+                <td data-label="Outstanding Fees">Shs12,450.00</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <br>
+
+    <section id="report-results">
+        <h3>Report Results: Academic Performance (Term 1)</h3>
+        <table border="2" width="100%" cellpadding="19">
+            <thead style="background-color: blue;">
+                <tr>
+                    <th>Student ID</th>
+                    <th>Full Name</th>
+                    <th>Grade/Class</th>
+                    <th>Mathematics</th>
+                    <th>Chemistry</th>
+                    <th>Biology</th>
+                    <th>English</th>
+                    <th>History</th>
+                    <th>Physics</th>
+                    <th>Fine Art</th>
+                    <th>Entreprenueship</th>
+                    <th>Geography</th>
+                    <th>Luganda</th>
+                    <th>CRE/Islam</th>
+                    <th>Agriculture</th>
+                    <th>Computer</th>
+                    <th>Kiswahili</th>
+                    <th>Position</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>STU-001</td>
+                    <td>Jane Doe</td>
+                    <td>10-A</td>
+                    <td>92</td>
+                    <td>88</td>
+                    <td>95</td>
+                    <td>91</td>
+                    <td>95</td>
+                    <td>92</td>
+                    <td>72</td>
+                    <th></th>
+                    <td>65</td>
+                    <th></th>
+                    <td>87</td>
+                    <td>90</td>
+                    <td>90</td>
+                    <th></th>
+                    <td>75</td>
+                    <td style="color: green;">Honors</td>
+                </tr>
+                <tr>
+                    <td>STU-002</td>
+                    <td>John Smith</td>
+                    <td>10-A</td>
+                    <td>75</td>
+                    <td>75</td>
+                    <td>75</td>
+                    <td>75</td>
+                    <td>75</td>
+                    <td>75</td>
+                    <td>75</td>
+                    <td>75</td>
+                    <td>75</td>
+                    <td>75</td>
+                    <td>75</td>
+                    <td>75</td>
+                    <td>82</td>
+                    <td>70</td>
+                    <td>2.8</td>
+                    <td>Pass</td>
+                </tr>
+                <tr>
+                    <td>STU-003</td>
+                    <td>Alex Rivera</td>
+                    <td>10-B</td>
+                    <td>45</td>
+                    <td>55</td>
+                    <td>55</td>
+                    <td>55</td>
+                    <td>55</td>
+                    <td>55</td>
+                    <td>55</td>
+                    <td>55</td>
+                    <td>55</td>
+                    <td>40</td>
+                    <td>40</td>
+                    <td>40</td>
+                    <td>40</td>
+                    <td>40</td>
+                    <td>1.2</td>
+                    <td style="color: red;">Review Required</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 School Management System | Generated on: April 25, 2026</p>
+    </footer>
+
+</body>
+</html>

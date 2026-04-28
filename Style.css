@@ -1,0 +1,829 @@
+:root {
+    --shss-blue: #004aad; /* Professional Royal Blue */
+    --shss-light-blue: #e6effc;
+    --white: #ffffff;
+    --text-dark: #1a2b4b;
+    --text-light: #5a7194;
+    --border-gray: #e1e8f0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body {
+    background-color: #f4f7fa;
+    display: flex;
+    min-height: 100vh;
+    
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background-color: var(--shss-blue);
+    color: var(--white);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 3rem;
+}
+
+.school-logo { width: 40px; filter: brightness(0) invert(1); }
+
+.nav-links { list-style: none; flex-grow: 1; }
+.nav-links li { margin-bottom: 0.8rem; }
+.nav-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.nav-links a i { margin-right: 12px; font-size: 1.1rem; }
+.nav-links a:hover, .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--white);
+}
+
+/* Main Content */
+.main-content { margin-left: 260px; width: 100%; padding: 2.5rem; }
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.user-welcome h1 { color: var(--text-dark); font-size: 1.8rem; }
+.user-welcome p { color: var(--text-light); }
+
+.term-badge {
+    background: var(--shss-light-blue);
+    color: var(--shss-blue);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* Cards */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-gray);
+}
+
+.card-blue {
+    background: var(--shss-blue);
+    color: var(--white);
+}
+
+.card-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.card-blue .card-title { color: var(--white); }
+
+.amount { font-size: 1.8rem; margin: 10px 0; }
+
+.btn-white {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: var(--white);
+    color: var(--shss-blue);
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Tables & Lists */
+.simple-table { width: 100%; border-collapse: collapse; }
+.simple-table td { padding: 10px 0; border-bottom: 1px solid var(--border-gray); font-size: 0.9rem; }
+.view-more { display: block; margin-top: 15px; color: var(--shss-blue); font-weight: 600; text-decoration: none; }
+
+.notice-box {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-gray);
+}
+.notice-box small { color: var(--shss-blue); font-weight: bold; }
+
+
+
+/* --- Base Mobile-First Changes --- */
+
+/* 1. Hide the checkbox and mobile button by default (for desktop) */
+#nav-toggle {
+    display: none;
+}
+
+.mobile-menu-btn {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background: var(--shss-blue);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* 2. Responsive Grid for Cards */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Automatically fits screen */
+    gap: 1.5rem;
+}
+
+/* --- Media Query for Mobile (Phones) --- */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        left: -260px; /* Hide sidebar off-screen */
+        transition: all 0.3s ease;
+        z-index: 1000;
+    }
+
+    .main-content {
+        margin-left: 0; /* Content takes full width */
+        padding: 1.5rem;
+        padding-top: 5rem; /* Space for the mobile button */
+    }
+
+    .mobile-menu-btn {
+        display: block; /* Show menu button on mobile */
+    }
+
+    /* When checkbox is checked, slide sidebar in */
+    #nav-toggle:checked ~ .sidebar {
+        left: 0;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+}
+
+/* --- Media Query for Tablets --- */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .sidebar {
+        width: 80px; /* Compact sidebar */
+    }
+    
+    .sidebar span, .sidebar h2 {
+        display: none; /* Hide text, show only icons */
+    }
+
+    .main-content {
+        margin-left: 80px;
+    }
+}
+
+
+
+/* --- Base Mobile-First Changes --- */
+
+/* 1. Hide the checkbox and mobile button by default (for desktop) */
+#nav-toggle {
+    display: none;
+}
+
+.mobile-menu-btn {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background: var(--shss-blue);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* 2. Responsive Grid for Cards */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Automatically fits screen */
+    gap: 1.5rem;
+}
+
+/* --- Media Query for Mobile (Phones) --- */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        left: -260px; /* Hide sidebar off-screen */
+        transition: all 0.3s ease;
+        z-index: 1000;
+    }
+
+    .main-content {
+        margin-left: 0; /* Content takes full width */
+        padding: 1.5rem;
+        padding-top: 5rem; /* Space for the mobile button */
+    }
+
+    .mobile-menu-btn {
+        display: block; /* Show menu button on mobile */
+    }
+
+    /* When checkbox is checked, slide sidebar in */
+    #nav-toggle:checked ~ .sidebar {
+        left: 0;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+}
+
+/* --- Media Query for Tablets --- */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .sidebar {
+        width: 80px; /* Compact sidebar */
+    }
+    
+    .sidebar span, .sidebar h2 {
+        display: none; /* Hide text, show only icons */
+    }
+
+    .main-content {
+        margin-left: 80px;
+    }
+}
+
+
+/* --- Root Variables for easy theme control --- */
+:root {
+    --shss-blue: #004aad;         /* Standard Hill Royal Blue */
+    --shss-hover-blue: #003580;   /* Darker Blue for hover states */
+    --shss-light-blue: #eef4ff;   /* Soft blue for backgrounds */
+    --white: #ffffff;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --card-shadow: 0 10px 25px rgba(0, 74, 173, 0.1);
+}
+
+/* --- Global Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fcfdfe; /* Almost white */
+    color: var(--text-dark);
+}
+
+/* --- Hero Section --- */
+.hero {
+    background-color: var(--shss-blue);
+    background-image: linear-gradient(135deg, var(--shss-blue) 0%, #002d6a 100%);
+    color: var(--white);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* --- Container & Controls --- */
+.container {
+    max-width: 1200px;
+    margin: -40px auto 40px; /* Pulls controls slightly into the hero */
+    padding: 0 20px;
+}
+
+.controls {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 15px 25px;
+    border: 2px solid var(--shss-light-blue);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.search-bar:focus {
+    outline: none;
+    border-color: var(--shss-blue);
+}
+
+/* --- Filter Buttons --- */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-btn {
+    background: var(--white);
+    border: 1px solid var(--shss-blue);
+    color: var(--shss-blue);
+    padding: 8px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: var(--shss-blue);
+    color: var(--white);
+}
+
+/* --- Teacher Grid (The "Portable" Layout) --- */
+.teacher-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* --- Teacher Card --- */
+.teacher-card {
+    background: var(--white);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.teacher-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--card-shadow);
+    border-color: var(--shss-light-blue);
+}
+
+.profile-img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 4px solid var(--shss-light-blue);
+    margin-bottom: 10px;
+}
+
+.dept-tag {
+    display: inline-block;
+    background: var(--shss-light-blue);
+    color: var(--shss-blue);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+}
+
+.teacher-name {
+    font-size: 1.25rem;
+    color: var(--shss-blue);
+    margin-bottom: 5px;
+}
+
+.teacher-role {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.philosophy {
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    font-style: italic;
+    margin-bottom: 20px;
+    min-height: 40px; /* Keeps cards uniform */
+}
+
+/* --- Stats Row --- */
+.stats {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-top: 1px solid #f1f5f9;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+}
+
+.stats strong {
+    color: var(--shss-blue);
+}
+
+/* --- Contact Button --- */
+.contact-btn {
+    display: block;
+    background-color: var(--shss-blue);
+    color: var(--white);
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.contact-btn:hover {
+    background-color: var(--shss-hover-blue);
+}
+
+/* --- Mobile Responsive Rules --- */
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 20px;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .container {
+        margin-top: -20px;
+    }
+
+    .teacher-grid {
+        grid-template-columns: 1fr; /* One card per row on small phones */
+    }
+}
+
+
+.hero {
+    position: relative;
+    height: 500px; /* Increased height for impact */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    /* Replace 'school-gate.jpg' with your actual image path */
+    background: url('Assets/Image/SHK.png') center/cover no-repeat;
+    overflow: hidden;
+}
+
+/* The dark blue tint overlay */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right, 
+        rgba(0, 74, 173, 0.85), 
+        rgba(0, 45, 106, 0.7)
+    );
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.breadcrumb {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.breadcrumb .active {
+    color: #00d2ff; /* A lighter blue accent */
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Scales based on screen size */
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+}
+
+/* Hero Buttons */
+.hero-btns {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn-primary {
+    background: var(--white);
+    color: var(--shss-blue);
+    padding: 12px 28px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: var(--shss-light-blue);
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    border: 2px solid var(--white);
+    color: var(--white);
+    padding: 10px 28px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .hero { height: 400px; }
+    .hero-btns { flex-direction: column; align-items: center; }
+    .btn-primary, .btn-outline { width: 80%; }
+}
+
+
+
+
+/* Section Styling */
+.faculty-section {
+    padding: 80px 0;
+    background-color: #ffffff; /* Keeping it clean and white */
+}
+
+.section-intro {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.sub-title {
+    color: #004aad; /* Shss Blue */
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.main-title {
+    font-size: 2.5rem;
+    color: #1a2b4b;
+    margin-bottom: 15px;
+}
+
+.title-underline {
+    width: 60px;
+    height: 4px;
+    background: #004aad;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+/* Updated Card Header to hold Image and Tag */
+.card-header {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.card-header .dept-tag {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0, 74, 173, 0.2);
+}
+
+
+
+
+/* --- Namespaced Container --- */
+#finance-system {
+    background-color: #0f172a;
+    color: #e2e8f0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    padding: 10px;
+    line-height: 1.6;
+}
+
+/* --- Header & Nav (Isolated) --- */
+#finance-system .fin-header {
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#finance-system .fin-header ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 0;
+    margin: 0;
+}
+
+#finance-system .fin-header li {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+/* --- Summary Tiles (Responsive Grid) --- */
+#finance-system .tile-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#finance-system .tile {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#finance-system .amount {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: block;
+    color: #f8fafc;
+}
+
+/* --- Table (Mobile-Safe) --- */
+#finance-system .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    margin: 20px 0;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#finance-system table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Prevents text squishing */
+    background: rgba(15, 23, 42, 0.5);
+}
+
+#finance-system th, 
+#finance-system td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#finance-system th {
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+/* --- Forms (Responsive Wrap) --- */
+#finance-system form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+#finance-system .form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 200px;
+}
+
+#finance-system input, 
+#finance-system select {
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+#finance-system button {
+    background: #0284c7;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* --- Progress Bar --- */
+#finance-system progress {
+    width: 100%;
+    height: 10px;
+    accent-color: #38bdf8;
+}
+
+/* --- Footer Isolation --- */
+footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    color: #64748b;
+
+}
+
+
+
+
+
+
+
+
+
+

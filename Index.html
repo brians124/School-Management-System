@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard Hill Kalungu Secondary School Management System</title>
+    <link rel="Stylesheet" href="Dashboard.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Standard Hill</h2>
+            </div>
+            <nav class="menu">
+                <ul>
+                <li class="active" onclick="showSection('dashboard')"><a href="Index.html"><span>📊</span> Dashboard</a></li>
+                <li onclick="showSection('students')"><a href="student.html"><span>🎓</span> Student Directory</a></li>
+                <li onclick="showSection('staff')"><a href="Teachers.html"><span>👨‍🏫</span> Staff Directory</a></li>
+                <li onclick="showSection('exams')"><a href="Report.html"><span>📚</span> Exams & Results</a></li>
+                <li onclick="showSection('classes')"><a href="classes.html"><span>🏫</span> Class Management</a></li>
+                <li onclick="showSection('attendance')"><a href="attendance.html"><span>📅</span> Attendance</a></li>
+                <li onclick="showSection('assignments')"><a href="assignments.html"><span>📝</span> Assignments</a></li>
+                <li onclick="showSection('timetable')"><a href="timetable.html"><span>⏰</span> Timetable</a></li>
+                <li onclick="showSection('discipline')"><a href="discipline.html"><span>⚖️</span> Discipline</a></li>
+                <li onclick="showSection('academics')"><a href="academics.html"><span>📝</span> Academic Results</a></li>
+                <li onclick="showSection('fees')"><a href="finance.html"><span>💰</span> Fees Management</a></li>
+                <li onclick="showSection('library')"><a href="library.html"><span>📚</span> Library</a></li>
+                <li onclick="showSection('transport')"><a href="transport.html"><span>🚍</span> Transport</a></li>
+                <li onclick="showSection('hostel')"><a href="hostel.html"><span>🏨</span> Hostel</a></li>
+                <li onclick="showSection('health')"><a href="health.html"><span>🏥</span> Health Records</a></li>
+                <li onclick="showSection('communication')"><a href="communication.html"><span>📞</span> Communication</a></li>
+                <li onclick="showSection('events')"><a href="events.html"><span>🎉</span> Events</a></li>
+                <li onclick="showSection('reports')"><a href="Report.html"><span>📈</span> Reports</a></li>
+                <li onclick="showSection('notices')"><a href="notices.html"><span>🔔</span> Notices</a></li>
+                <li onclick="showSection('settings')"><a href="settings.html"><span>⚙️</span> Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="top-header">
+                <div class="search-container">
+                    <input type="text" id="globalSearch" placeholder="Search students, staff, or records...">
+                </div>
+                <div class="System-profile" onclick="toggleProfileMenu()">
+    <div class="profile-info">
+        <span class="admin-name">Nkata Brian</span>
+        <span class="admin-role">Head Admin</span>
+    </div>
+    <div class="profile-pic"></div>
+
+    <div class="profile-dropdown" id="profileDropdown">
+        <ul>
+            <li><i class="icon">👤</i> My Profile</li>
+            <li><i class="icon">⚙️</i> System Settings</li>
+            <li><i class="icon">🔔</i> Notifications <span class="notif-count">3</span></li>
+            <hr>
+            <li class="logout-link"><i class="icon">🚪</i> Logout</li>
+        </ul>
+    </div>
+  </div>
+     </header>
+
+
+
+
+     <section class="dashboard-stats">
+    <div class="stat-card">
+        <div class="stat-icon">🎓</div>
+        <div class="stat-details">
+            <h3>Total Students</h3>
+            <p class="stat-number">1,248</p>
+            <span class="stat-trend up">↑ 12% New admission</span>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">👨‍🏫</div>
+        <div class="stat-details">
+            <h3>Active Teachers</h3>
+            <p class="stat-number">48</p>
+            <span class="stat-trend">Check attendance</span>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">💵</div>
+        <div class="stat-details">
+            <h3>Fees Collected</h3>
+            <p class="stat-number">85%</p>
+            <span class="stat-trend up">↑ 5% from last month</span>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🔔</div>
+        <div class="stat-details">
+            <h3>Active Notices</h3>
+            <p class="stat-number">06</p>
+            <span class="stat-trend alert">Requires review</span>
+        </div>
+    </div>
+</section>
+
+
+<div class="content-grid">             
+ <section class="data-table-container glass-card">
+<div class="section-header">
+    <div class="header-left">
+        <div class="header-icon">📂</div>
+        <div class="header-text">
+            <h2>Student Directory</h2>
+            <div class="header-status">
+                <span class="status-dot"></span>
+                <span class="status-count">1,248 Records Found</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="header-actions">
+        <button class="btn-secondary">📥 Export</button>
+        <button class="btn-primary">+ Add New Student</button>
+    </div>
+</div>
+ <table class="styled-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+             <th>Name</th>
+             <th>Class</th>
+             <th>Performance</th>
+             <th>Status</th>
+             <th>Action</th>
+             </tr>
+             </thead>
+             <tbody id="studentTableBody">
+             <tr>
+             <td>#202401</td>
+             <td>Nansamba Passy</td>
+             <td>Senior 6</td>
+             <td><progress value="85" max="100"></progress></td>
+             <td><span class="badge badge-green">Active</span></td>
+             <td><button class="btn-view">View</button></td>
+             </tr>
+             </tbody>
+             </table>
+             </section>
+
+                <aside class="right-modules">
+                    <div class="notice-board glass-card">
+                        <h2>Notice Board</h2>
+                        <ul class="notice-list">
+                            <li>
+                                <span class="date">Oct 24</span>
+                                <p>End of Term exams start next week.</p>
+                            </li>
+                            <li>
+                                <span class="date">Oct 20</span>
+                                <p>Inter-school sports gala updates.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="fee-tracker glass-card">
+                        <h2>Quick Fee Status</h2>
+                        <div class="chart-placeholder">
+                            <p>75% Fees Collected</p>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
