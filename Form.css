@@ -380,7 +380,7 @@ input {
 .overlay {
     /* Replace the URL with your actual image path */
     background: linear-gradient(rgba(0, 82, 212, 0.4), rgba(0, 82, 212, 0.4)), 
-                url('Assets/Image/SHK.png'); 
+                url('SHK.png'); 
     background-size: cover;
     background-position: center;
     color: #FFFFFF;
